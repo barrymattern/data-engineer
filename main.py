@@ -1,6 +1,8 @@
 import requests
+from bs4 import BeautifulSoup
 
-URL = 'https://www.linkedin.com/jobs/search/'
+URL = 'https://www.linkedin.com/jobs/'
 page = requests.get(URL)
 
-print(page.text)
+soup = BeautifulSoup(page.content, 'html.parser')
+print(soup)
