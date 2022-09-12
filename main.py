@@ -1,3 +1,5 @@
+# https://www.youtube.com/watch?v=zAEfWiC_KBU
+
 from bs4 import BeautifulSoup
 import requests
 import re
