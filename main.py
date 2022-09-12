@@ -1,13 +1,12 @@
-import requests
 from bs4 import BeautifulSoup
+import re
 
-url = 'https://www.newegg.ca/gigabyte-geforce-rtx-3080-ti-gv-n308tgaming-oc-12gd/p/N82E16814932436?Description=3080&cm_re=3080-'
+with open('index.html', 'r') as f:
+    doc = BeautifulSoup(f, 'html.parser')
 
-response = requests.get(url)
-doc = BeautifulSoup(response.text, 'html.parser')
+tags = doc.find_all('input', type='text')
+for tag in tags:
+    tag['placeholder'] = 'I changed you!'
 
-prices = doc.find_all(text='$')
-parent = prices[0].parent
-strong = parent.find('strong')
-
-print(strong.string)
+with open('changed.html', 'w') as file:
+    file.write(str(doc))
